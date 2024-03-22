@@ -2,9 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const p = require("primebit.js");
+const path = require("path")
 
 const app = express();
 app.use(bodyParser.json());
+
+app.use(express.static(path.join(__dirname, 'website')));
 
 app.get('/animememes', async (req, res) => {
   try {
@@ -17,7 +20,7 @@ app.get('/animememes', async (req, res) => {
   }
 });
 
-app.get('/', async (req, res) => {
+app.get('/meme', async (req, res) => {
   try {
     const response = await axios.get('https://meme-api.com/gimme/memes');
     const { postLink, subreddit, title, url, author, ups } = response.data;
