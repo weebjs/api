@@ -7,7 +7,9 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
-  background-color: black;
+  background-color: #1F1F1F;
+  font-family: 'DM Sans', sans-serif;
+  text-align: center;
 }
 
 h1,
@@ -15,7 +17,8 @@ p {
   color: white;
 }
 
-ul,
-table {
-  display: none;
+div {
+  border: 1px;
+  word-wrap: break-word;
 }
+
