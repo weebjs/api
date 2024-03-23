@@ -1,9 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   background-color: #1F1F1F;
   font-family: 'DM Sans', sans-serif;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 h1,
@@ -21,8 +30,15 @@ div {
   color: white;
   background-color: #2E2E2E;
   padding: 10px;
-  font-family: 'DM sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   border-radius: 5px;
   outline: 2px solid #FF0000;
   text-align: left;
+}
+
+.hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
