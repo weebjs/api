@@ -6,6 +6,8 @@ const path = require("path")
 
 const app = express();
 
+// Access command-line arguments
+const args = process.argv.slice(2);
 const options = args[0];
 
 app.use(bodyParser.json());
@@ -22,7 +24,6 @@ app.get('/animememes', async (req, res) => {
     res.status(500).json({ code: "500", error: 'an error occurred while fetching the anime meme.' });
   }
 });
-
 
 app.get('*', (req, res) => {
   res.status(404).json({ code: '404', message: "subreddit has no posts or doesn't exist." });
