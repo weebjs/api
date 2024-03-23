@@ -1,14 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
 const axios = require('axios');
 const p = require("primebit.js");
-const path = require("path")
+const path = require("path");
 
 const app = express();
 
-// Access command-line arguments
-const args = process.argv.slice(2);
-const options = args[0];
+const options = process.argv[2]; // Access the first command-line argument
 
 app.use(bodyParser.json());
 
