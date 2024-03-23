@@ -2,37 +2,28 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const p = require("primebit.js");
-const path = require("path")
+const path = require("path");
 
 const app = express();
+
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'website')));
 
 app.get('/animememes', async (req, res) => {
   try {
-    const response = await axios.get('https://meme-api.com/gimme/animememes');
+    const options = req.query.text; // Access the text from the query parameter
+    const response = await axios.get(`https://meme-api.com/gimme/${options}`);
     const { postLink, subreddit, title, url, author, ups } = response.data;
     const filter = { postLink, subreddit, title, url, author, ups };
     res.json(filter);
   } catch (error) {
-    res.status(500).json({ code: "500", error: 'an error occurred while fetching the anime meme.' });
-  }
-});
-
-app.get('/meme', async (req, res) => {
-  try {
-    const response = await axios.get('https://meme-api.com/gimme/memes');
-    const { postLink, subreddit, title, url, author, ups } = response.data;
-    const filter = { postLink, subreddit, title, url, author, ups };
-    res.json(filter);
-  } catch (error) {
-    res.status(500).json({ code: "500", error: 'an error occurred while fetching the meme.' });
+    res.status(500).json({ code: "500", error: 'An error occurred while fetching the anime meme.' });
   }
 });
 
 app.get('*', (req, res) => {
-  res.status(404).json({ code: '404', message: "subreddit has no posts or doesn't exist." });
+  res.status(404).json({ code: '404', message: "Subreddit has no posts or doesn't exist." });
 });
 
 const port = 3000;
